@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entries type="array">
+  <entry>
+    <billable type="boolean">true</billable>
+    <created-at type="datetime">2009-10-16T09:57:22Z</created-at>
+    <date type="date">2009-10-11</date>
+    <description>freckle restful api test, bulk import</description>
+    <id type="integer">83601</id>
+    <minutes type="integer">120</minutes>
+    <project-id type="integer">8475</project-id>
+    <updated-at type="datetime">2009-10-16T09:57:22Z</updated-at>
+    <url nil="true"></url>
+    <user-id type="integer">5538</user-id>
+  </entry>
+  <entry>
+    <billable type="boolean">true</billable>
+    <created-at type="datetime">2009-10-16T09:57:22Z</created-at>
+    <date type="date">2009-10-12</date>
+    <description>freckle restful api test, bulk import</description>
+    <id type="integer">83602</id>
+    <minutes type="integer">30</minutes>
+    <project-id type="integer" nil="true"></project-id>
+    <updated-at type="datetime">2009-10-16T09:57:22Z</updated-at>
+    <url nil="true"></url>
+    <user-id type="integer">5538</user-id>
+  </entry>
+</entries>
