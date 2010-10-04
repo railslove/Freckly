@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "freckly.gemspec",
      "lib/freckly.rb",
      "lib/freckly/entry.rb",
      "lib/freckly/faraday/parse_xml.rb",

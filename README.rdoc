@@ -1,6 +1,32 @@
 = Freckly
 
-Description goes here.
+We built this gem for http://github.com/railslove/Freckly-App
+
+NOTE: It is currently missing quite a few API calls
+
+== Install
+
+  gem install freckly
+
+== How To Use
+
+  require 'rubygems'
+  require 'freckly'
+
+  Freckly.token = "token_from_freckly"
+  Freckly.subdomain = "my_subdomain"
+
+  # Get all projects
+  projects = Freckly::Project.all
+
+  # Get all time entries for a project
+  projects.first.entries
+
+  # If you know the ID of a project
+  Freckly::Entry.find_all_for_project(123)
+
+  # You can pass any of the options from http://github.com/madrobby/freckle-apidocs/blob/master/entries.mkdn
+  Freckly::Entry.find_all_for_project(123, :billable => true, :tags => "fun")
 
 == Note on Patches/Pull Requests
 
@@ -14,4 +40,4 @@ Description goes here.
 
 == Copyright
 
-Copyright (c) 2010 Red Davis. See LICENSE for details.
+Copyright (c) 2010 Railslove. See LICENSE for details.
