@@ -2,7 +2,7 @@
 
 module Faraday
   class Response::ParseXml < Response::Middleware
-    MultiXml.engine = :rexml
+    MultiXml.parser = :rexml
 
     def self.register_on_complete(env)
       env[:response].on_complete do |response|

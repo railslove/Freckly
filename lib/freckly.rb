@@ -1,6 +1,5 @@
 $:.unshift(File.expand_path(File.dirname(__FILE__)))
 
-# TODO: use bundler
 # Gems
 require "faraday"
 require "faraday_middleware"
