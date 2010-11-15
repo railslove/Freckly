@@ -11,7 +11,7 @@ module Freckly
     end
 
     def entries(options={})
-      Entry.find_all_for_project(id, options)
+      Entry.all(options.merge(:projects => id))
     end
 
     %w{ name id }.each do |method_name|

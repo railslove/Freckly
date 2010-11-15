@@ -15,8 +15,9 @@ module Freckly
     attr_accessor :token, :subdomain
 
     def authed_get(path, options={})
-      results = authed_connection.get do |request|
+      authed_connection.get do |request|
         request.url(path, options)
+
       end.body
     end
 
@@ -25,7 +26,9 @@ module Freckly
         :user_agent => "Freckly",
         "X-FreckleToken" => token
       }
-      @connection ||= Faraday::Connection.new(:url => "http://#{subdomain}.letsfreckle.com", :headers => headers) do |builder|
+      @connection ||= Faraday::Connection.new(:url => "https://#{subdomain}.letsfreckle.com",
+                                              :headers => headers,
+                                              :ssl => {:verify => false}) do |builder|
         builder.adapter Faraday.default_adapter
         builder.use Faraday::Response::ParseXml
         builder.use Faraday::Response::Mashify
