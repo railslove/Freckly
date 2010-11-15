@@ -6,7 +6,7 @@ NOTE: It is currently missing quite a few API calls
 
 ## How To Install
 
-    sudo gem install campfire_bot
+    sudo gem install freckly
 
 ## Example
 
