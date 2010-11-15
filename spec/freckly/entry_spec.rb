@@ -8,24 +8,6 @@ describe Freckly::Entry do
   end
 
   describe "Class methods" do
-    describe "#find_all_for_project" do
-      describe "the request" do
-        before { Freckly::Entry.find_all_for_project(123) }
-        subject { WebMock::API }
-
-        it { should have_requested(:get, "http://test.letsfreckle.com/api/entries.xml").with(:headers => {"X-FreckleToken" => "aaa"}, :query => {:projects => "123"}) }
-      end
-
-      describe "the response" do
-        before { @response = Freckly::Entry.find_all_for_project(123) }
-        subject { @response }
-
-        it { should be_a(Array) }
-
-        its(:first) { should be_a(Freckly::Entry) }
-      end
-    end
-
     describe "#all" do
       before do
         @response = Freckly::Entry.all(:projects => %w{123 192})
