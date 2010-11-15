@@ -1,8 +1,25 @@
 module Freckly
   class Entry
     class << self
-      def find_all_for_project(project_ids, options={})
-        Freckly.authed_get("/api/entries.xml", options.merge(:projects => project_ids))[:entries].map {|entry| new(entry) }
+      def find_all_for_project(project_id, options={})
+        Freckly.authed_get("/api/entries.xml", options.merge(:projects => project_id))[:entries].map {|entry| new(entry) }
+      end
+
+      def all(options={})
+        options = commatorize_params(options)
+        Freckly.authed_get("/api/entries.xml", options)[:entries].map {|entry| new(entry) }
+      end
+
+      private
+
+      def commatorize_params(params)
+        params.each_pair do |key, value|
+          next unless value.is_a?(Array)
+
+          params[key] = value.join(",")
+        end
+
+        params
       end
     end
 

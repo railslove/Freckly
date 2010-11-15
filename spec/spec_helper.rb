@@ -14,5 +14,5 @@ def fixture_path(file_name)
 end
 
 RSpec.configure do |config|
-  config.include WebMock
+  config.include WebMock::API
 end
