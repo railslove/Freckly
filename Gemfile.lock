@@ -32,7 +32,7 @@ GEM
     rspec-expectations (2.1.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.1.0)
-    webmock (1.5.0)
+    webmock (1.6.1)
       addressable (>= 2.2.2)
       crack (>= 0.1.7)
 
@@ -47,4 +47,4 @@ DEPENDENCIES
   multi_xml (~> 0.2.0)
   rake (~> 0.8.7)
   rspec (~> 2.1.0)
-  webmock (~> 1.5.0)
+  webmock (~> 1.6.1)

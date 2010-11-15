@@ -4,7 +4,7 @@ describe Freckly::Project do
   before do
     Freckly.token = "aaa"
     Freckly.subdomain = "test"
-    stub_request(:any, /projects.xml$/).to_return(:body => fixture("projects.xml"))
+    stub_request(:any, /projects.xml/).to_return(:body => fixture("projects.xml"))
   end
 
   describe "Class methods" do
@@ -28,8 +28,8 @@ describe Freckly::Project do
   end
 
   describe "Initialization" do
-    before(:all) { @project = Freckly::Project.all.first }
-    subject { @project }
+    let(:project) { Freckly::Project.all.first }
+    subject { project }
 
     specify { subject.name.should == "TestProject1" }
     specify { subject.id.should == 1343 }
@@ -37,9 +37,9 @@ describe Freckly::Project do
 
   describe "#entries" do
     before { Freckly::Entry.stub!(:find_all_for_project).and_return([mock]) }
-    before(:all) { @project = Freckly::Project.all.first }
+    let(:project) { Freckly::Project.all.first }
 
-    subject { @project.entries }
+    subject { project.entries }
 
     it { should be_a(Array) }
   end
