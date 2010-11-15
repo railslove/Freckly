@@ -14,13 +14,13 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "freckly"
 
-  s.add_dependency "faraday", "~> 0.5.1"
+  s.add_dependency "faraday", "~> 0.5.3"
   s.add_dependency "faraday_middleware", "~> 0.2.1"
   s.add_dependency "multi_xml", "~> 0.2.0"
   s.add_dependency "hashie", "~> 0.4.0"
 
-  s.add_development_dependency "rspec", "~> 2.0.1"
-  s.add_development_dependency "webmock", "~> 1.4.0"
+  s.add_development_dependency "rspec", "~> 2.1.0"
+  s.add_development_dependency "webmock", "~> 1.6.1"
   s.add_development_dependency "rake", "~> 0.8.7"
 
   s.files         = `git ls-files`.split("\n")
