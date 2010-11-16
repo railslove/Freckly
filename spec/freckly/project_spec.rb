@@ -13,7 +13,7 @@ describe Freckly::Project do
         before { Freckly::Project.all }
         subject { WebMock }
 
-        it { should have_requested(:get, "http://test.letsfreckle.com/api/projects.xml").with(:headers => {"X-FreckleToken" => "aaa"}) }
+        it { should have_requested(:get, "https://test.letsfreckle.com/api/projects.xml").with(:headers => {"X-FreckleToken" => "aaa"}) }
       end
 
       describe "the response" do
@@ -36,7 +36,11 @@ describe Freckly::Project do
   end
 
   describe "#entries" do
-    before { Freckly::Entry.stub!(:find_all_for_project).and_return([mock]) }
+    before do
+      stub_request(:any, /entries/).to_return(:body => fixture("entries.xml"))
+      Freckly::Entry.stub!(:find_all_for_project).and_return([mock])
+    end
+
     let(:project) { Freckly::Project.all.first }
 
     subject { project.entries }

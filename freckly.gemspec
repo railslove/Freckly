@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "freckly"
 
-  s.add_dependency "faraday", "~> 0.5.3"
-  s.add_dependency "faraday_middleware", "~> 0.2.1"
+  #s.add_dependency "faraday", "~> 0.5.3"
+  s.add_dependency "faraday_middleware", "~> 0.3.0"
   s.add_dependency "multi_xml", "~> 0.2.0"
   s.add_dependency "hashie", "~> 0.4.0"
 

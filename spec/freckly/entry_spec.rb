@@ -16,21 +16,35 @@ describe Freckly::Entry do
       describe "the request" do
         subject { WebMock::API }
 
-        it { should have_requested(:get, "http://test.letsfreckle.com/api/entries.xml").with(:headers => {"X-FreckleToken" => "aaa"}, :query => {:projects => "123,192"}) }
+        it { should have_requested(:get, "https://test.letsfreckle.com/api/entries.xml").with(:headers => {"X-FreckleToken" => "aaa"},
+                                                                                              :query => {:search => {
+                                                                                              :projects => "123,192"}
+                                                                                             }) }
       end
 
-      describe "the response" do
-        subject { @response }
+      context "when returning something" do
+        describe "the response" do
+          subject { @response }
+
+          it { should be_a(Array) }
+
+          its(:first) { should be_a(Freckly::Entry) }
+        end
+      end
+
+      context "when returning nothing" do
+        before { stub_request(:any, /entries/) }
+
+        subject { Freckly::Entry.all(:projects => %w{123 192}) }
 
         it { should be_a(Array) }
-
-        its(:first) { should be_a(Freckly::Entry) }
+        it { should be_empty }
       end
     end
   end
 
   describe "Initialization" do
-    let(:entry) { Freckly::Entry.find_all_for_project(123).first }
+    let(:entry) { Freckly::Entry.all(:projects => 123).first }
     subject { entry }
 
     its(:billable) { should be_true }

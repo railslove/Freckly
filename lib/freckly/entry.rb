@@ -2,20 +2,13 @@ module Freckly
   class Entry
     class << self
       def all(options={})
-        options = commatorize_params(options)
-        Freckly.authed_get("/api/entries.xml", options)[:entries].map {|entry| new(entry) }
-      end
+        results = Freckly.authed_get("/api/entries.xml", :search => options)
 
-      private
-
-      def commatorize_params(params)
-        params.each_pair do |key, value|
-          next unless value.is_a?(Array)
-
-          params[key] = value.join(",")
+        if entries = results[:entries]
+          entries.map {|entry| new(entry) }
+        else
+          []
         end
-
-        params
       end
     end
 

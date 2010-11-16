@@ -17,7 +17,6 @@ module Freckly
     def authed_get(path, options={})
       authed_connection.get do |request|
         request.url(path, options)
-
       end.body
     end
 
