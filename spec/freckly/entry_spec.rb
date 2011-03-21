@@ -41,6 +41,37 @@ describe Freckly::Entry do
         it { should be_empty }
       end
     end
+
+    describe "#count" do
+      before do
+        @response = Freckly::Entry.count(:projects => %w{123 192})
+      end
+
+      describe "the request" do
+        subject { WebMock::API }
+
+        it { should have_requested(:get, "https://test.letsfreckle.com/api/entries.xml").with(:headers => {"X-FreckleToken" => "aaa"},
+                                                                                              :query => {:search => {
+                                                                                              :projects => "123,192"}
+                                                                                             }) }
+      end
+
+      context "when returning something" do
+        describe "the response" do
+          subject { @response }
+
+          it { should eql(2) }
+        end
+      end
+
+      context "when returning nothing" do
+        before { stub_request(:any, /entries/) }
+
+        subject { Freckly::Entry.count(:projects => %w{123 192}) }
+
+        it { should eql(0) }
+      end
+    end
   end
 
   describe "Initialization" do
