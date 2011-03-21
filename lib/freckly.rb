@@ -9,6 +9,8 @@ require "multi_xml"
 require "freckly/project"
 require "freckly/entry"
 require "freckly/faraday/parse_xml"
+require "freckly/ext/enumerable"
+require "freckly/faraday/utils"
 
 module Freckly
   class << self
