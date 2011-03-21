@@ -29,7 +29,10 @@ NOTE: It is currently missing quite a few API calls
     Freckly::Entry.all(:projects => %w{123 456 789})
 
     # You can pass any of the options from http://github.com/madrobby/freckle-apidocs/blob/master/entries.mkdn
-    Freckly::Entry.find_all_for_project(123, :billable => true, :tags => "fun")
+    Freckly::Entry.all(:billable => true, :tags => "fun")
+
+    # Count
+    Freckly::Entry.count(:billable => true, :tags => "fun")
 
 ## Note on Patches/Pull Requests
 
