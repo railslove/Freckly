@@ -1,5 +1,5 @@
 module Enumerable
-  def to_param(options={})
+  def build_query_params(options={})
     escape = options[:escape]
     previous_base = options[:base]
     parts = []
@@ -12,7 +12,7 @@ module Enumerable
         values = value.map(&:strip).join(",")
         parts << build_param(base, values)
       when Hash
-        parts << value.to_param(:escape => false, :base => base)
+        parts << value.build_query_params(:escape => false, :base => base)
       else
         parts << (escape ? build_escaped_param(base, value) : build_param(base, value))
       end
