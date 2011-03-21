@@ -25,6 +25,22 @@ describe Freckly::Project do
         specify { subject.first.should be_a(Freckly::Project) }
       end
     end
+
+    describe "#count" do
+      describe "the request" do
+        before { Freckly::Project.count }
+        subject { WebMock }
+
+        it { should have_requested(:get, "https://test.letsfreckle.com/api/projects.xml").with(:headers => {"X-FreckleToken" => "aaa"}) }
+      end
+
+      describe "the response" do
+        before { @response = Freckly::Project.count }
+        subject { @response }
+
+        it { should eql(2) }
+      end
+    end
   end
 
   describe "Initialization" do
