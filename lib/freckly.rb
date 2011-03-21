@@ -8,12 +8,13 @@ require "multi_xml"
 # Files
 require "freckly/project"
 require "freckly/entry"
-require "freckly/faraday/parse_xml"
 require "freckly/ext/enumerable"
 require "freckly/faraday/utils"
 
 module Freckly
   class << self
+    MultiXml.parser = :nokogiri
+
     attr_accessor :token, :subdomain
 
     def authed_get(path, options={})

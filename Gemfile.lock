@@ -1,11 +1,12 @@
 PATH
   remote: .
   specs:
-    freckly (0.0.3)
+    freckly (0.0.5)
       faraday (~> 0.5.7)
-      faraday_middleware (~> 0.3.0)
+      faraday_middleware (~> 0.3.2)
       hashie (~> 0.4.0)
-      multi_xml (~> 0.2.0)
+      multi_xml (~> 0.2.2)
+      nokogiri (~> 1.4.1)
 
 GEM
   remote: http://rubygems.org/
@@ -22,6 +23,7 @@ GEM
     hashie (0.4.0)
     multi_xml (0.2.2)
     multipart-post (1.1.0)
+    nokogiri (1.4.4)
     rack (1.2.2)
     rake (0.8.7)
     rspec (2.1.0)
