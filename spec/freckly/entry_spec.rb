@@ -24,13 +24,20 @@ describe Freckly::Entry do
 
       describe "the request after changing the token and subdomain" do
         subject { WebMock::API }
-        Freckly.token = "bbb"
-        Freckly.subdomain = "api"
-
-        it { should have_requested(:get, "https://api.letsfreckle.com/api/entries.xml").with(:headers => {"X-FreckleToken" => "bbb"},
+        it { should have_requested(:get, "https://test.letsfreckle.com/api/entries.xml").with(:headers => {"X-FreckleToken" => "aaa"},
                                                                                               :query => {:search => {
                                                                                               :projects => "123,192"}
                                                                                              }) }
+
+        it {
+          Freckly.token = "bbb"
+          Freckly.subdomain = "api"
+          @response = Freckly::Entry.all(:projects => %w{123 192})
+          should have_requested(:get, "https://api.letsfreckle.com/api/entries.xml").with(:headers => {"X-FreckleToken" => "bbb"},
+                                                                                              :query => {:search => {
+                                                                                              :projects => "123,192"}
+                                                                                             })
+        }
       end
 
       context "when returning something" do

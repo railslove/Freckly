@@ -28,6 +28,8 @@ module Freckly
         :user_agent => "Freckly",
         "X-FreckleToken" => token
       }
+      @connection ||= {}
+      @connection[subdomain] ||= {}
       @connection[subdomain][token] ||= Faraday::Connection.new(:url => "https://#{subdomain}.letsfreckle.com",
                                               :headers => headers,
                                               :ssl => {:verify => false}) do |builder|
