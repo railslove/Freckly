@@ -30,9 +30,8 @@ module Freckly
       }
       @connection ||= {}
       @connection[subdomain] ||= {}
-      @connection[subdomain][token] ||= Faraday::Connection.new(:url => "https://#{subdomain}.letsfreckle.com",
-                                              :headers => headers,
-                                              :ssl => {:verify => false}) do |builder|
+      @connection[subdomain][token] ||= Faraday::Connection.new(:url => "http://#{subdomain}.letsfreckle.com",
+                                              :headers => headers) do |builder|
         builder.adapter Faraday.default_adapter
         builder.use Faraday::Response::ParseXml
         builder.use Faraday::Response::Mashify
