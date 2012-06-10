@@ -1,12 +1,14 @@
 # Freckly
 
-We built this gem for http://github.com/railslove/Freckly-App
+Freckly is a ruby client for accessing the letsfreckle.com time tracking data. See http://letsfreckle.com for more information.
+
+API information can be found at http://madrobby.github.com/freckle-apidocs/
 
 NOTE: It is currently missing quite a few API calls
 
 ## How To Install
 
-    sudo gem install freckly
+    gem install freckly
 
 ## Example
 
