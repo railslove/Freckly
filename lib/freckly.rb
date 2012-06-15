@@ -8,10 +8,13 @@ require "multi_xml"
 # Files
 require "freckly/project"
 require "freckly/entry"
-require "freckly/faraday/parse_xml"
+require "freckly/ext/enumerable"
+require "freckly/faraday/utils"
 
 module Freckly
   class << self
+    MultiXml.parser = :nokogiri
+
     attr_accessor :token, :subdomain
 
     def authed_get(path, options={})
@@ -25,7 +28,9 @@ module Freckly
         :user_agent => "Freckly",
         "X-FreckleToken" => token
       }
-      @connection ||= Faraday::Connection.new(:url => "https://#{subdomain}.letsfreckle.com",
+      @connection ||= {}
+      @connection[subdomain] ||= {}
+      @connection[subdomain][token] ||= Faraday::Connection.new(:url => "https://#{subdomain}.letsfreckle.com",
                                               :headers => headers,
                                               :ssl => {:verify => false}) do |builder|
         builder.adapter Faraday.default_adapter

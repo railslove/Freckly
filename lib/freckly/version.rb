@@ -1,3 +1,3 @@
 module Freckly
-  VERSION = "0.0.3"
+  VERSION = "0.0.12"
 end

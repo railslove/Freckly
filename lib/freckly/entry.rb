@@ -1,14 +1,20 @@
 module Freckly
   class Entry
     class << self
-      def all(options={})
+      def all(options = {})
+        get_all(options).map {|entry| new(entry) }
+      end
+
+      def count(options = {})
+         get_all(options).size
+      end
+
+      private
+
+      def get_all(options = {})
         results = Freckly.authed_get("/api/entries.xml", :search => options)
 
-        if entries = results[:entries]
-          entries.map {|entry| new(entry) }
-        else
-          []
-        end
+        results[:entries] || []
       end
     end
 
