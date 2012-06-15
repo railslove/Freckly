@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    freckly (0.0.2)
+    freckly (0.0.3)
       faraday_middleware (~> 0.3.0)
       hashie (~> 0.4.0)
       multi_xml (~> 0.2.0)
@@ -22,10 +22,10 @@ GEM
     addressable (2.2.2)
     crack (0.1.8)
     diff-lcs (1.1.2)
-    faraday_middleware (0.3.0)
+    faraday_middleware (0.3.1)
       faraday (~> 0.5.3)
     hashie (0.4.0)
-    multi_xml (0.2.0)
+    multi_xml (0.2.2)
     multipart-post (1.0.1)
     rack (1.2.1)
     rake (0.8.7)
@@ -46,10 +46,7 @@ PLATFORMS
 
 DEPENDENCIES
   faraday!
-  faraday_middleware (~> 0.3.0)
   freckly!
-  hashie (~> 0.4.0)
-  multi_xml (~> 0.2.0)
   rake (~> 0.8.7)
   rspec (~> 2.1.0)
   webmock (~> 1.6.1)
